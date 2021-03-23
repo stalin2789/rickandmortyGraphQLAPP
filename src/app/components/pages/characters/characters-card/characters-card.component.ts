@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Character } from '@shared/interfaces/data-interface';
 
 @Component({
   selector: 'app-characters-card',
   templateUrl: './characters-card.component.html',
-  styleUrls: ['./characters-card.component.scss']
+  styleUrls: ['./characters-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CharactersCardComponent implements OnInit {
+export class CharactersCardComponent {
 
-  constructor() { }
+  @Input() character: Character;
 
-  ngOnInit(): void {
+  toggleFavorite():void {
+
   }
 
+  getIcon(isFavorite: boolean):string {
+  return isFavorite ? 'heart-solid' : 'heart.svg';
+  }
 }
